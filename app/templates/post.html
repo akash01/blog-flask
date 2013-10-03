@@ -1,0 +1,23 @@
+<table class="blog_thread table table-bordered ">
+  <tbody>
+  <tr class="row-fluid">
+      <td>
+          <legend><a  href="/post/{{post.id }}">{{post.title}}</a></legend> 
+          {% for tag in post.tags %}
+            <span class="label label-inverse">
+              <a  href="/tag/{{tag.name }}">{{ tag.name }}</a>
+            </span>
+          {% endfor %}
+          <div style="padding-top: 10px">
+            <div><p>{{ post.body|truncate(600,True) }}</p></div>
+            <div class="pubdate">Published: {{ post.pub_date.strftime("%B %d %I:%M")}}</div>
+            {% if post.author %}
+              <div class="label label-warning "><b>by {{ post.author.firstname }} {{ post.author.lastname }}</b></div>
+            {% endif %}
+            <div><a class="btn-link" href="/post/{{post.id }}">Read the whole post...</a></div>
+          </div>
+      </td>
+  </tr>
+  </tbody>
+</table> 
+   

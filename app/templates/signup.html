@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block heading %}
+  Welcome to Flask Blog!
+{% endblock %}
+
+{% block statement %}
+  Please enter your details below and sign-up to become a member of Flask Blog.
+{% endblock %}
+
+{% block content %}
+    <h2>Sign up</h2>
+
+  {% for message in form.firstname.errors %}
+    <div class="text-warning">{{ message }}</div>
+  {% endfor %}
+
+  {% for message in form.lastname.errors %}
+    <div class="text-warning">{{ message }}</div>
+  {% endfor %}
+
+  {% for message in form.email.errors %}
+    <div class="text-warning">{{ message }}</div>
+  {% endfor %}
+
+  {% for message in form.password.errors %}
+    <div class="text-warning">{{ message }}</div>
+  {% endfor %}
+  <div class="row-fluid">
+    <div class="navbar-inner">
+      <form action="{{ url_for('signup') }}" method=post>
+        {{ form.hidden_tag() }}
+
+        {{ form.firstname.label }}
+        {{ form.firstname }}
+
+        {{ form.lastname.label }}
+        {{ form.lastname }}
+
+        {{ form.email.label }}
+        {{ form.email }}
+
+        {{ form.password.label }}
+        {{ form.password }}
+        <br>
+        <input class="btn btn-primary" type="submit" value="Sign Up">
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

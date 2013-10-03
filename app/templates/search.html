@@ -1,0 +1,24 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block herolink %}
+	<h3>Search results for "{{query}}":</h3>
+	{% include 'flash.html' %}
+{% endblock %}
+
+{% block content %}
+	<div class="well span9">
+	  <div class="row-fluid">
+	  	{% if results %}
+		    {% for post in results  %}
+				{% include 'post.html' %}
+			 {% endfor %}
+		 {% endif %}
+	  </div>
+	</div>
+{% endblock %}
+
+<!--side bar-->
+{% block content2 %}
+	{% include 'sidebar.html' %}
+{% endblock %}

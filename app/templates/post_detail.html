@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block heading %}
+  Welcome to the Flask Blog
+{% endblock %}
+
+{% block statement %}
+  Hello, {{ user.firstname }} ! Publish and enjoy your article.
+{% endblock %}
+
+{% block herolink %}
+    {% include 'flash.html' %}
+{% endblock %}
+
+<!--published posts-->
+{% block content %}
+
+  <div class="well span9">
+    <div class="row-fluid">
+      <table class="blog_thread table table-bordered ">
+      <tbody>
+      <tr class="row-fluid">
+          <td>
+              <legend class="detail">{{post.title}}</legend> 
+              <div style="padding-top: 10px">
+                <div> <p>{{ post.body }}</p></div>
+                <div class="pubdate">Published: {{ post.pub_date.strftime("%B %d %I:%M")}}</div>
+                <div class="label label-warning "><b>by {{ post.author.firstname }} {{ post.author.lastname }}</b></div>
+              </div>
+          </td>
+      </tr>
+      </tbody>
+    </table> 
+    </div>
+  </div>
+{% endblock %}
+
+
+<!--side bar-->
+{% block content2 %}
+  {% include 'sidebar.html' %}
+{% endblock %}

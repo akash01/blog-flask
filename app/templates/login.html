@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block heading %}
+  Hello !
+{% endblock %}
+
+{% block statement %}
+  Please log in to add a post on Flask Blog
+{% endblock %}
+
+<!--login form-->
+{% block content %}
+  <div class="row-fluid">
+    <div class="navbar-inner">
+      {% for message in form.email.errors %}
+        <div class="text-warning">{{ message }}</div>
+      {% endfor %}
+
+      {% for message in form.password.errors %}
+        <div class="text-warning">{{ message }}</div>
+      {% endfor %}
+
+      <form action="{{ url_for('login') }}" method=post>
+        {{ form.hidden_tag() }}
+
+        {{ form.email.label }}
+        {{ form.email }}
+
+        {{ form.password.label }}
+        {{ form.password }}
+        <br>
+        <input class="btn btn-primary" type="submit" value="Submit">
+        <!--{{ form.submit }} -->
+      </form>
+    </div>
+  </div>
+{% endblock %}

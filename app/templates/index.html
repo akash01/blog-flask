@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block heading %}
+	Welcome to the Flask Blog
+{% endblock %}
+
+{% block statement %}
+	Publish and enjoy your article.
+{% endblock %}
+
+{% block herolink %}
+    {% include 'flash.html' %}
+{% endblock %}
+
+<!--published posts-->
+{% block content %}
+	<div class="well span9">
+	  <div class="row-fluid">
+	  	{% for post in posts.items  %}
+			{% include 'post.html' %}
+		{% endfor %}
+		{% include 'pagination.html' %}
+	  </div>
+	</div>
+{% endblock %}
+
+
+<!--side bar-->
+{% block content2 %}
+	{% include 'sidebar.html' %}
+{% endblock %}

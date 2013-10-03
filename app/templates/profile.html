@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block heading %}
+	Welcome to the Flask Blog
+{% endblock %}
+
+{% block statement %}
+ 	<p>Hello, <strong class="text-info">{{ user.firstname }}</strong>. You are a logged in member of Flask Blog. To share an article on this Blog, Create a post below.</p>
+ 	{% include 'flash.html' %}
+{% endblock %}
+
+{% block content %}
+	{% include 'add_post.html' %}
+{% endblock %}
