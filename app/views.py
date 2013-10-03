@@ -75,14 +75,6 @@ def search():
 @app.route('/search_results/<query>')
 def search_results(query):
     recent_post = Post.query.order_by(Post.pub_date.desc()).limit(5).all()
-
-    columns = db.session.execute("SELECT column_name FROM information_schema.columns WHERE table_name = 'post'")
-    for colname in columns:
-        print colname
-        if colname != "title_tsv":
-            flash('Sorry first run the vector search script from postgres-vector file of your project')
-            return redirect(url_for('index'))
-
     results = db.session.execute("SELECT * FROM post WHERE title_tsv @@ plainto_tsquery('"+query+"') OR body_tsv @@ plainto_tsquery('"+query+"')")
     
     if not results:
